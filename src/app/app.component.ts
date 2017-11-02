@@ -12,6 +12,7 @@ export class AppComponent {
 
   }
   toProductDetails() {
-    this.router.navigate(['/product',2]);//在路由路径中传递参数
+    this.router.navigate(['/product']);
+    // this.router.navigate(['/product',2]);//在路由路径中传递参数
   }
 }

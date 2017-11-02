@@ -19,8 +19,12 @@
 </ul>-->
 
 <a [routerLink]="['/']">主页</a>
-<!--<a [routerLink]="['/product']" [queryParams]="{id:1}">商品详情</a> 在查询参数中传递数据-->
-<a [routerLink]="['/product', 1]" >商品详情</a><!--在路由路径中传递参数-->
+<!--在查询参数中传递数据-->
+<!--<a [routerLink]="['/product']" [queryParams]="{id:1}">商品详情</a> -->
+<!--在路由路径中传递参数-->
+<!--<a [routerLink]="['/product', 1]" >商品详情</a>-->
+<!--在路由配置中传递数据-->
+<a [routerLink]="['/product']" >商品详情</a> 
 <input type="button" value="商品详情" (click)="toProductDetails()">
 
 <router-outlet></router-outlet>

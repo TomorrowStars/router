@@ -7,7 +7,8 @@ import { Code404Component } from './code404/code404.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   // {path: 'product', component: ProductComponent},//在查询参数中传递数据
-  {path: 'product/:id', component: ProductComponent},//在路由路径中传递数据
+  // {path: 'product/:id', component: ProductComponent},//在路由路径中传递数据
+  {path: 'product', component: ProductComponent, data:[{id:1}]},//在路由配置中传递数据
   {path: '**', component: Code404Component}
 ];
 
