@@ -19,9 +19,9 @@ export class ProductComponent implements OnInit {
     //非同一个页面时
     // this.productId = this.routeInfo.snapshot.params["id"];
     //同一个页面内路由时 利用参数订阅模式（防止A,B按钮路由时数据丢失）
-    // this.routeInfo.params.subscribe((params: Params) => this.productId = params["id"]);
+    this.routeInfo.params.subscribe((params: Params) => this.productId = params["id"]);
     //3,在路由配置中传递数据
-    this.productId = this.routeInfo.snapshot.data[0]["id"];
+    // this.productId = this.routeInfo.snapshot.data[0]["id"];
   }
 
 }
