@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { Code404Component } from './code404/code404.component';
 import { ProductDescComponent } from "./product-desc/product-desc.component";
 import { SellerInfoComponent } from "./seller-info/seller-info.component";
+import { ChatComponent } from "./chat/chat.component";
 
 const routes: Routes = [
   //redirectTo :重定向
@@ -21,7 +22,10 @@ const routes: Routes = [
   ]},
   //在路由配置中传递数据
   // {path: 'product', component: ProductComponent, data:[{id:1}]},
-  {path: '**', component: Code404Component}
+  // 路径找不到时表示的模板
+  {path: '**', component: Code404Component},
+  //辅助路由
+  {path: 'chat', component:ChatComponent, outlet:'aux'},
 ];
 
 @NgModule({

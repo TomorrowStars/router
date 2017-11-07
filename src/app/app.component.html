@@ -26,5 +26,12 @@
 <!--在路由配置中传递数据-->
 <!--<a [routerLink]="['/product']" >商品详情</a> -->
 <input type="button" value="商品详情" (click)="toProductDetails()">
-
-<router-outlet></router-outlet>
+<!--//辅助路由-->
+<a [routerLink]="[{outlets: {aux: 'chat'}}]">开始聊天</a>
+<!--//primary:同时设置主路由-->
+<!--<a [routerLink]="[{outlets: {primary: 'home', aux: 'chat'}}]">开始聊天</a>-->
+<a [routerLink]="[{outlets: {aux: null}}]">结束聊天</a>
+<div>
+  <router-outlet></router-outlet>
+  <router-outlet name="aux"></router-outlet>
+</div>
