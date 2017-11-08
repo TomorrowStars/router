@@ -8,6 +8,7 @@ import { SellerInfoComponent } from "./seller-info/seller-info.component";
 import { ChatComponent } from "./chat/chat.component";
 import { LoginGuard } from "./guard/login.guard";
 import { UnSavedGuard } from "./guard/unSaved.guard";
+import { ProductResolve } from "./guard/product.resolve";
 
 const routes: Routes = [
   //redirectTo :重定向
@@ -21,8 +22,10 @@ const routes: Routes = [
    children:[
     {path:'', component: ProductDescComponent},
     {path:'sellerInfo/:sellerID', component: SellerInfoComponent},
-  ], canActivate: [LoginGuard],
-     canDeactivate: [UnSavedGuard]
+  ], 
+    // canActivate: [LoginGuard],
+    //  canDeactivate: [UnSavedGuard],
+     resolve: {product: ProductResolve}
   },
   //在路由配置中传递数据
   // {path: 'product', component: ProductComponent, data:[{id:1}]},
@@ -35,6 +38,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [LoginGuard, UnSavedGuard]
+  providers: [LoginGuard, UnSavedGuard, ProductResolve]
 })
 export class AppRoutingModule { }

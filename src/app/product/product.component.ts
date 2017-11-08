@@ -9,7 +9,10 @@ import { ActivatedRoute, Params } from "@angular/router";
 export class ProductComponent implements OnInit {
 
   productId: number;
-  constructor(private routeInfo: ActivatedRoute) { }
+  productName: string;
+  constructor(private routeInfo: ActivatedRoute) {
+
+   }
 
   ngOnInit() {
     //snapshot：参数快照
@@ -19,9 +22,18 @@ export class ProductComponent implements OnInit {
     //非同一个页面时
     // this.productId = this.routeInfo.snapshot.params["id"];
     //同一个页面内路由时 利用参数订阅模式（防止A,B按钮路由时数据丢失）
-    this.routeInfo.params.subscribe((params: Params) => this.productId = params["id"]);
+    // this.routeInfo.params.subscribe((params: Params) => this.productId = params["id"]);
     //3,在路由配置中传递数据
     // this.productId = this.routeInfo.snapshot.data[0]["id"];
-  }
 
+    this.routeInfo.data.subscribe((data: {product: Product}) => {
+      this.productId = data.product.id;
+      this.productName = data.product.name;
+    });
+  }
 }
+  export class Product {
+    constructor(public id: number, public name: string){
+
+    };
+  }
