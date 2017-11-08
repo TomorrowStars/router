@@ -6,6 +6,8 @@ import { Code404Component } from './code404/code404.component';
 import { ProductDescComponent } from "./product-desc/product-desc.component";
 import { SellerInfoComponent } from "./seller-info/seller-info.component";
 import { ChatComponent } from "./chat/chat.component";
+import { LoginGuard } from "./guard/login.guard";
+import { UnSavedGuard } from "./guard/unSaved.guard";
 
 const routes: Routes = [
   //redirectTo :重定向
@@ -19,7 +21,9 @@ const routes: Routes = [
    children:[
     {path:'', component: ProductDescComponent},
     {path:'sellerInfo/:sellerID', component: SellerInfoComponent},
-  ]},
+  ], canActivate: [LoginGuard],
+     canDeactivate: [UnSavedGuard]
+  },
   //在路由配置中传递数据
   // {path: 'product', component: ProductComponent, data:[{id:1}]},
   // 路径找不到时表示的模板
@@ -31,6 +35,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [LoginGuard, UnSavedGuard]
 })
 export class AppRoutingModule { }
